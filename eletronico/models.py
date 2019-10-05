@@ -70,6 +70,10 @@ class Processo(models.Model):
     )
 
 class Documento(models.Model):
+    processo = models.ForeignKey(Processo, on_delete=models.PROTECT,
+        blank=True,
+        null=True
+    )
     numero = models.IntegerField()
     titulo = models.CharField("Titulo", max_length=200)
     data = models.DateField(auto_now=False, auto_now_add=False)
